@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import './App.css'
+
 import TMDB from './TMDB'
 import MovieRow from './components/MovieRow'
 
@@ -20,9 +22,9 @@ export default () => {
         {
           movieList.map((item, key) => (
             <MovieRow 
-              key = { key } 
-              title = { item.title }
-              items = { item.items }
+              key={ key } 
+              title={ item.title }
+              items={ item.items }
             />
           ))
         }
