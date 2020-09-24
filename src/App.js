@@ -61,6 +61,12 @@ export default () => {
           ))
         }
       </section>
+      
+      <footer>
+       <p>Feito com <span role="img" aria-label="coração">💖</span> por Jean Mendonça.</p>
+       <p>Direitos de imagem para a Netflix.</p>
+       <p>Dados pegos do site themoviedb.org.</p>
+      </footer>
     </div>
   )
 }
