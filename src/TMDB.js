@@ -1,16 +1,15 @@
 const API_KEY = '5e5c90258e97287d7cc73a696133956f'
 const API_BASE = 'https://api.themoviedb.org/3'
 
-const basicFetch = async (endpoint) => {
+const basicFetch = async(endpoint) => {
   const req = await fetch(`${API_BASE}${endpoint}`)
   const json = await req.json()
   return json
 }
 
 export default {
-  getHomeList: async () => {
-    return [
-      {
+  getHomeList: async() => {
+    return [{
         slug: 'originals',
         title: 'Originais do Netflix',
         items: await basicFetch(`/discover/tv?with_network=213&language=pt-BR&api_key=${API_KEY}`)
@@ -51,5 +50,25 @@ export default {
         items: await basicFetch(`/discover/movie?with_genres=99&language=pt-BR&api_key=${API_KEY}`)
       }
     ]
+  },
+
+  getMovieInfo: async(movieId, type) => {
+    let info = {}
+
+    if (movieId) {
+      switch (type) {
+        case 'movie':
+          info = await basicFetch(`/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`)
+          break
+        case 'tv':
+          info = info = await basicFetch(`/tv/${movieId}?language=pt-BR&api_key=${API_KEY}`)
+          break
+        default:
+          info = null
+          break
+      }
+    }
+
+    return info
   }
 }
