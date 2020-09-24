@@ -5,9 +5,10 @@ export default ({ item }) => {
   let firstDate = new Date(item.first_air_date)
 
   let genres = []
-  for (let i in item.genres) {
-    genres.push(item.genres[i].name)
-  }
+  for (let i in item.genres) { genres.push(item.genres[i].name) }
+
+  let description = item.overview
+  if (description.length > 200) { description = description.substring(0, 200) + '...' }
 
   return (
     <section className="featured" style={{
@@ -25,11 +26,11 @@ export default ({ item }) => {
             <div className="featured--seasons">{ item.number_of_seasons } temporada{item.number_of_seasons !== 1 ? 's' : ''}</div>
           </div>
           
-          <div className="featured--description">{ item.overview }</div>
+          <div className="featured--description">{ description }</div>
           
           <div className="featured--buttons">
-            <a href="#" className="featured--buttons--watch">▶ Assistir</a>
-            <a href="#" className="featured--buttons--myList">+ Minha Lista</a>
+            <a href="/" className="featured--buttons--watch">▶ Assistir</a>
+            <a href="/" className="featured--buttons--myList">+ Minha Lista</a>
           </div>
           
           <div className="featured--genres"><strong>Gêneros:</strong> { genres.join(', ') }</div>
